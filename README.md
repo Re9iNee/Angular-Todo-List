@@ -6,3 +6,5 @@ Andy is gae as well
 
 
 GitHub and Git are amazing tools, And I love em
+
+Just wanna check commits

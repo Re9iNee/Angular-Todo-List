@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Document</title>
+    <style>
+        input[type=checkbox]:checked+label {
+            color: red;
+            text-decoration: line-through;
+        }
+
+        input[type=checkbox]+label {
+            color: green;
+            transition: 1s all;
+        }
+    </style>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <input type="text" ng-model="searchTerm" placeholder="search">
+    <form name="list">
+        <div ng-repeat="task in taskLists | filter: searchTerm">
+            <input type="checkbox" name="{{ task.name }}" ng-model="task.checked" checked="{{ task.checked }}"
+                ng-change='checkedToggle()'>
+            <label for="{{ task.name }}" ng-click="updateTask(task)" > {{ task.name }} </label>
+            <span ng-click='deleteTask(task.name)'><img src="./trash.png" alt="trash Icon"></span>
+        </div>
+    </form>
+    <form name="editTask" ng-show="editToggle" ng-submit="submitChange()">
+        <input type="text" name="editedText" ng-model="editedText.name" value="{{ editedText.name }} " autofocus>
+        <input type="submit" value="Update Task">
+    </form>
+    <form name="myForm" ng-submit="addTask()">
+        <input type="text" name="myTask" required ng-model='task' autofocus>
+        <input type="submit" value="Add to my day">
+    </form>
+</body>
+<script>
+let debug = false;
+    let app = angular.module('myApp', []).controller('myCtrl', $scope => {
+        $scope.taskLists = [{
+            name: "ame",
+            checked: false
+        }, {
+            name: "agha",
+            checked: true
+        }]
+        $scope.addTask = () => {
+            $scope.taskLists.push({
+                name: $scope.task,
+                checked: false
+            });
+            $scope.task = "";
+        }
+        $scope.deleteTask = function (str) {
+            for (const [i, v] of $scope.taskLists.entries()){
+                if (v.name === str){
+                    $scope.taskLists.splice(i, 1)
+                }
+            }
+        }
+        $scope.editToggle = false;
+        $scope.updateTask = function (task){
+            $scope.editToggle = true;
+            $scope.editedText = task;
+            debug = $scope;
+        }
+        $scope.submitChange = function(){
+            $scope.editToggle = false;
+            $scope.editedText = null;
+        }
+    })
+</script>
+
+</html>

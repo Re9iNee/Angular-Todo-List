@@ -1,11 +1,11 @@
 # Angular-Todo-List
 A Simple Todo Application Written in Angular
-- [ ] Mercury
-- [x] Venus
-- [x] Earth (Orbit/Moon)
-- [x] Mars
-- [ ] Jupiter
-- [ ] Saturn
-- [ ] Uranus
-- [ ] Neptune
-- [ ] Comet Haley
+- [ ] create task
+- [ ] delete task
+- [ ] update task
+- [ ] create category
+- [ ] delete category
+- [ ] save to localstorage
+- [ ] front
+- [ ] mark as done task
+- [ ] unmark task

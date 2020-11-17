@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome</title>
+    <style>
+        body {
+            margin: 0 auto;
+        }
+
+        /* Debug Purposes */
+        * {
+            border: 1px solid red;
+        }
+
+        .container {
+            border: 1px solid green;
+        }
+
+        /* Display */
+        body {
+            width: 100vw;
+            height: 100vh;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .container>* {
+            margin: 20px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <section class="container">
+        <section class="image"><img src="grocery-cart.png" alt="groceries"></section>
+        <section class="texts">
+            <h1>Get organized on your life</h1>
+            <p>Tudy is a simple app and effective bluh bluh</p>
+        </section>
+        <section class="button"><button>Get Started</button></section>
+    </section>
+</body>
+
+</html>

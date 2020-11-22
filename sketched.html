@@ -20,7 +20,7 @@
         }
 
         /* Debug Purpose: */
-        body {
+        /* body {
             border: 1px solid green;
         }
 
@@ -38,7 +38,7 @@
 
         .tasks {
             border: 1px solid purple;
-        }
+        } */
 
         /* Display: */
         .container {
@@ -51,7 +51,6 @@
         }
 
         .head {
-            flex-grow: 5;
             display: flex;
             flex-direction: column;
         }
@@ -60,8 +59,9 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            flex-grow: 5;
-            flex-wrap: wrap;
+            overflow: scroll;
+            overflow-x: hidden;
+            overflow-y: scroll;
         }
 
         .tasks>* {
@@ -102,11 +102,11 @@
 
 
         /* Margins & Paddings: */
-        .head header {
+        header {
             padding: 6%;
         }
 
-        .head .task {
+        .task {
             padding: 12px;
         }
 
@@ -193,6 +193,7 @@
             border: 2px solid #D0D8E9;
             transition: all ease-in-out .5s;
         }
+
         label {
             user-select: none;
             -webkit-user-select: none;
@@ -208,9 +209,12 @@
         input[type='checkbox']:checked+label {
             text-decoration: line-through;
         }
-        .iconTouchTarget, input[type="checkbox"] {
+
+        .iconTouchTarget,
+        input[type="checkbox"] {
             cursor: pointer;
         }
+
         label {
             cursor: text;
         }
@@ -219,39 +223,359 @@
 
 <body>
     <section class="container">
-        <section class="head">
-            <header>Today</header>
-            <main class="tasks">
-                <section class="task">
-                    <section class="center">
-                        <section class="iconTouchTarget">
-                            <input type="checkbox" id="Gym">
-                        </section>
-                        <label>Gym im not too bad</label>
+        <header>Today</header>
+        <main class="tasks">
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
                     </section>
-                    <section class="iconTouchTarget" ng-click="">
-                        <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
-                                fill="#888" fill-rule="nonzero" /></svg>
-                    </section>
+                    <label>Gym im not too bad</label>
                 </section>
-                <section class="task">
-                    <section class="center">
-                        <section class="iconTouchTarget">
-                            <input type="checkbox" id="Date">
-                        </section>
-                        <label for="" contenteditable="true">Date</label>
-                    </section>
-                    <section class="iconTouchTarget" ng-click="">
-                        <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
-                                fill="#888" fill-rule="nonzero" /></svg>
-                    </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
                 </section>
-            </main>
-        </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Gym">
+                    </section>
+                    <label>Gym im not too bad</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <section class="task">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="Date">
+                    </section>
+                    <label>Date</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+        </main>
         <section class="input">
             <input type="text" name="" id="" placeholder="Add More Items">
             <section class="iconTouchTarget" ng-click="">

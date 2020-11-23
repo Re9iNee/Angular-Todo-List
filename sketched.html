@@ -50,10 +50,6 @@
             text-align: center;
         }
 
-        .head {
-            display: flex;
-            flex-direction: column;
-        }
 
         .tasks {
             display: flex;
@@ -72,6 +68,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 100%;
         }
 
         .input {
@@ -82,7 +79,7 @@
 
         .input input {
             flex-grow: 1;
-            max-width: 75%;
+            max-width: 88%;
         }
 
         .iconTouchTarget {
@@ -103,23 +100,29 @@
 
         /* Margins & Paddings: */
         header {
-            padding: 6%;
+            padding: 2.6rem;
         }
 
         .task {
-            padding: 12px;
+            padding: 1.5rem .2rem;
+            margin: .2rem 0rem;
         }
 
         .input {
-            padding: 12px;
+            padding: 1.5rem;
         }
 
         .input input {
-            padding: 12px;
+            padding: .4rem 0.8rem;
         }
 
         label {
-            margin-left: 17px;
+            margin-left: .1rem;
+        }
+
+        .tasks {
+            margin: .3rem 0;
+            padding: .2rem;
         }
 
 
@@ -130,11 +133,12 @@
             src: url("./extras/Fonts/SF-Pro-Display-Bold.otf");
         }
 
-        .head header {
+        header {
             font-family: "SFProDisplayBold";
-            font-size: 2rem;
+            font-size: 2.2rem;
             line-height: 41px;
-            color: #000000;
+            text-align: left;
+            color: rgb(178, 126, 181);
         }
 
         @font-face {
@@ -159,25 +163,37 @@
         }
 
         .input input::placeholder {
-            color: rgba(60, 60, 67, 30);
+            color: rgb(178, 126, 181);
         }
 
         .input input {
+            color: rgb(178, 126, 181);
             font-family: "SFProTextRegular";
             font-size: 17px;
-            text-align: center;
+            text-align: left;
             letter-spacing: -0.41px;
             line-height: 22px;
         }
 
+        .tasks {
+            color: rgb(224, 224, 224);
+        }
+
         /* Details: */
+        .container {
+            background-color: rgb(30, 30, 30);
+        }
+
         .input input {
             border-radius: 16.5px;
             border: 1px solid rgb(200, 200, 204);
+            background-color: rgb(50, 50, 50);
         }
 
         .task {
             border-top: 1px solid rgba(201, 209, 227, 0.3);
+            border-radius: 12px;
+            background-color: rgb(46, 46, 46);
         }
 
         .tasks> :last-child {
@@ -203,7 +219,7 @@
 
 
         input[type='checkbox']:checked {
-            background: #abd;
+            background: rgb(178, 126, 181);
         }
 
         input[type='checkbox']:checked+label {

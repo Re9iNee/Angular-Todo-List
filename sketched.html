@@ -5,11 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sketched Simple Todo</title>
+    <script>
+        resize()
+        // We listen to the resize event
+        window.addEventListener('resize', () => {
+            // We execute the same script as before
+            resize()
+        });
+
+        function resize() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+    </script>
     <style>
         /* Init */
         body {
             margin: 0 auto;
             height: 100vh;
+            height: calc(var(--vh, 1vh) * 100);
             width: 100vw;
         }
 
@@ -288,11 +302,6 @@
     </section>
     </section>
 </body>
-<script>
-    window.onresize = function () {
-        document.body.height = window.innerHeight;
-    }
-    window.onresize(); // called to initially set the height.
-</script>
+
 
 </html>

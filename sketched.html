@@ -108,7 +108,7 @@
         .task {
             /* padding: 1.5rem .2rem; */
             padding: .3rem .2rem;
-            margin: .2rem 0rem;
+            margin: .2rem 0.1rem;
         }
 
         .input {
@@ -125,7 +125,7 @@
 
         .tasks {
             margin: .3rem 0;
-            padding: .2rem;
+            padding: 1rem;
         }
 
 
@@ -189,18 +189,13 @@
 
         .input input {
             border-radius: 16.5px;
-            border: 1px solid rgb(200, 200, 204);
+            border: none;
             background-color: rgb(50, 50, 50);
         }
 
         .task {
-            border-top: 1px solid rgba(201, 209, 227, 0.3);
             border-radius: 12px;
             background-color: rgb(46, 46, 46);
-        }
-
-        .tasks> :last-child {
-            border-bottom: 1px solid rgba(201, 209, 227, 0.3);
         }
 
         input[type='checkbox'] {
@@ -293,5 +288,11 @@
     </section>
     </section>
 </body>
+<script>
+    window.onresize = function () {
+        document.body.height = window.innerHeight;
+    }
+    window.onresize(); // called to initially set the height.
+</script>
 
 </html>

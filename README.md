@@ -1,3 +1,6 @@
+# Test:
+https://re9inee.github.io/Angular-Todo-List/sketched.html
+
 # Angular-Todo-List
 A Simple Todo Application Written in Angular
 - [X] create task
@@ -7,7 +10,8 @@ A Simple Todo Application Written in Angular
 - [ ] create category
 - [ ] delete category
 - [ ] save to localstorage
-- [ ] front
+- [X] front
 - [X] mark as done task
 - [X] unmark task
 - [X] search task
+

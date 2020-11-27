@@ -44,7 +44,7 @@
             </section>
         </main>
         <section class="input">
-            <input type="text" name="" id="" placeholder="Add More Items">
+            <input type="text" name="" id="" placeholder="Add More Items" autofocus>
             <section class="iconTouchTarget" ng-click="">
                 <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
                     <g transform="translate(-278 -11)" fill="none" fill-rule="evenodd">
@@ -61,14 +61,6 @@
 </html>
 <script>
     let app = angular.module('myApp', [])
-    // class task {
-    //     constructor(title) {
-    //         this.title = title;
-    //         this.favourite = false;
-    //         this.checked = false;
-    //         this.created = 
-    //     }
-    // }
     app.controller('myCtrl', $scope => {
         $scope.taskLists = [{
             title: "Date",

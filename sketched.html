@@ -14,7 +14,21 @@
     <section class="container">
         <header>Today</header>
         <main class="tasks">
-            <section class="task">
+            <section class="task" ng-repeat="task in taskLists">
+                <section class="center">
+                    <section class="iconTouchTarget">
+                        <input type="checkbox" id="" ng-model="task.checked">
+                    </section>
+                    <label>{{ task.title }}</label>
+                </section>
+                <section class="iconTouchTarget" ng-click="deleteTask('{{ task.$$hashKey }}')">
+                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <path id="deleteSvg"
+                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
+                            fill="#888" fill-rule="nonzero" /></svg>
+                </section>
+            </section>
+            <!-- <section class="task">
                 <section class="center">
                     <section class="iconTouchTarget">
                         <input type="checkbox" id="Gym">
@@ -41,7 +55,7 @@
                             d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
                             fill="#888" fill-rule="nonzero" /></svg>
                 </section>
-            </section>
+            </section> -->
         </main>
         <section class="input">
             <input type="text" name="" id="" placeholder="Add More Items">
@@ -58,28 +72,27 @@
     </section>
     </section>
 </body>
+
 </html>
 <script>
     let app = angular.module('myApp', [])
-    // class task {
-    //     constructor(title) {
-    //         this.title = title;
-    //         this.favourite = false;
-    //         this.checked = false;
-    //         this.created = 
-    //     }
-    // }
     app.controller('myCtrl', $scope => {
+        // localStorage.getItem()
         $scope.taskLists = [{
             title: "Date",
             checked: true,
             favourite: false,
-            created: Date.now() - (6 * 24 * 60 * 60 * 1000)
-        },{
+            created: 1605787618219
+        }, {
             title: "Gym",
             checked: false,
             favourite: false,
-            created: Date.now() - (3 * 24 * 60 * 60 * 1000)
+            created: 1606046846005,
+        }, {
+            title: "Drink Water",
+            checked: false,
+            favourite: true,
+            created: 1606046846005,
         }];
         $scope.addTask = (title) => {
             $scope.taskLists.push({
@@ -88,6 +101,11 @@
                 favourite: false,
                 created: Date.now()
             })
+        }
+        $scope.deleteTask = (title) => {
+            for (const property in $scope.taskLists) {
+                debugger
+            }
         }
     })
 </script>

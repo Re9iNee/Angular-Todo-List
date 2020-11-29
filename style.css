@@ -179,9 +179,14 @@ body {
 .container {
     background-color: rgb(30, 30, 30);
 }
-.input input:focus {
+.input input:focus, .input input:active {
     outline: none;
+    border: 1px solid #e1e1e1;
 }
+.input input:hover {
+    background-color: rgb(69, 69, 69);
+}
+
 .input input {
     border-radius: 16.5px;
     border: none;

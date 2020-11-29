@@ -17,7 +17,7 @@
         <header>Today</header>
         <main class="tasks">
             <section class="task animate-repeat"
-                ng-repeat="task in taskLists | orderBy: 'created' : true | filter: searchTerm">
+                ng-repeat="task in taskLists | orderBy: 'checked' : false | filter: searchTerm">
                 <section class="center">
                     <section class="iconTouchTarget" ng-click="task.checked = !(task.checked)">
                         <input type="checkbox" id="" ng-model="task.checked" ng-click="stopPropagation($event)">
@@ -89,7 +89,38 @@
             checked: false,
             favourite: true,
             created: 1606046846005,
-        }];
+        },
+        {
+            title: "Date",
+            checked: true,
+            favourite: false,
+            created: 1605787618219
+        }, {
+            title: "Gym",
+            checked: false,
+            favourite: false,
+            created: 1606046846005,
+        }, {
+            title: "Drink Water",
+            checked: false,
+            favourite: true,
+            created: 1606046846005,
+        },{
+            title: "Date",
+            checked: true,
+            favourite: false,
+            created: 1605787618219
+        }, {
+            title: "Gym",
+            checked: false,
+            favourite: false,
+            created: 1606046846005,
+        }, {
+            title: "Drink Water",
+            checked: false,
+            favourite: true,
+            created: 1606046846005,
+        },];
 
 
         $scope.addTask = (title) => {

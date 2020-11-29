@@ -22,7 +22,8 @@
                     <section class="iconTouchTarget" ng-click="task.checked = !(task.checked)">
                         <input type="checkbox" id="" ng-model="task.checked" ng-click="stopPropagation($event)">
                     </section>
-                    <label style="text-decoration: {{ task.checked ? 'line-through;' : 'none'}}">{{ task.title }}</label>
+                    <label
+                        style="text-decoration: {{ task.checked ? 'line-through;' : 'none'}}">{{ task.title }}</label>
                 </section>
                 <section class="iconTouchTarget" ng-click="deleteTask(task.$$hashKey)">
                     <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
@@ -33,9 +34,9 @@
             </section>
         </main>
         <form ng-model="myForm" class="input" ng-submit="searchMode ? changeSearch(taskName)  : addTask(taskName)">
-            <input type="text" name="" ng-change="searchMode ? changeSearch(taskName) : null" ng-model="taskName" id=""
-                placeholder="{{ searchMode ? 'Search ...' : 'Add Items' }}" autofocus>
-            <section class="iconTouchTarget" ng-click="searchMode = !searchMode"
+            <input type="text" name="" ng-change="searchMode ? changeSearch(taskName) : clearSearchTerm()"
+                ng-model="taskName" id="" placeholder="{{ searchMode ? 'Search ...' : 'Add Items' }}" autofocus>
+            <section class="iconTouchTarget" ng-click="searchMode = !searchMode; clearSearchTerm();"
                 title="{{ !searchMode ? 'Search' : 'Add' }}">
                 <svg class="animate-switch" ng-hide="searchMode" width="24" height="24"
                     xmlns="http://www.w3.org/2000/svg">
@@ -47,9 +48,9 @@
                 </svg>
                 <svg class="animate-switch" ng-show="searchMode" width="24" height="24"
                     xmlns="http://www.w3.org/2000/svg">
-                        <path id="searchSvg"
-                            d="M22.286 9.429H14.57V1.714C14.571.768 13.804 0 12.857 0h-1.714c-.947 0-1.714.768-1.714 1.714V9.43H1.714C.768 9.429 0 10.196 0 11.143v1.714c0 .947.768 1.714 1.714 1.714H9.43v7.715c0 .946.767 1.714 1.714 1.714h1.714c.947 0 1.714-.768 1.714-1.714V14.57h7.715c.946 0 1.714-.767 1.714-1.714v-1.714c0-.947-.768-1.714-1.714-1.714z"
-                            fill="#888" fill-rule="nonzero" />
+                    <path id="searchSvg"
+                        d="M22.286 9.429H14.57V1.714C14.571.768 13.804 0 12.857 0h-1.714c-.947 0-1.714.768-1.714 1.714V9.43H1.714C.768 9.429 0 10.196 0 11.143v1.714c0 .947.768 1.714 1.714 1.714H9.43v7.715c0 .946.767 1.714 1.714 1.714h1.714c.947 0 1.714-.768 1.714-1.714V14.57h7.715c.946 0 1.714-.767 1.714-1.714v-1.714c0-.947-.768-1.714-1.714-1.714z"
+                        fill="#888" fill-rule="nonzero" />
                 </svg>
             </section>
         </form>
@@ -65,7 +66,10 @@
         $scope.searchMode = false;
         // localStorage.getItem()
         $scope.changeSearch = (input) => {
-            $scope.searchTerm = input
+            $scope.searchTerm = input;
+        }
+        $scope.clearSearchTerm = () => {
+            $scope.searchTerm = '';
         }
         $scope.stopPropagation = (event) => {
             event.stopPropagation();

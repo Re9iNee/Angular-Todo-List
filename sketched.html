@@ -6,21 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sketched Simple Todo</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
     <script src="iosToolbarHeight.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animation.css">
 </head>
 
 <body ng-app="myApp" ng-controller="myCtrl">
     <section class="container">
         <header>Today</header>
         <main class="tasks">
-            <section class="task" ng-repeat="task in taskLists">
+            <section class="task animate-repeat"
+                ng-repeat="task in taskLists | orderBy: 'created' : true | filter: searchTerm">
                 <section class="center">
                     <section class="iconTouchTarget" ng-click="task.checked = !(task.checked)">
                         <input type="checkbox" id="" ng-model="task.checked" ng-click="stopPropagation($event)">
                     </section>
-                    <label
-                        style="text-decoration: {{ task.checked ? 'line-through;' : 'none'}}">{{ task.title }}</label>
+                    <label style="text-decoration: {{ task.checked ? 'line-through;' : 'none'}}">{{ task.title }}</label>
                 </section>
                 <section class="iconTouchTarget" ng-click="deleteTask(task.$$hashKey)">
                     <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
@@ -29,44 +31,25 @@
                             fill="#888" fill-rule="nonzero" /></svg>
                 </section>
             </section>
-            <!-- <section class="task">
-                <section class="center">
-                    <section class="iconTouchTarget">
-                        <input type="checkbox" id="Gym">
-                    </section>
-                    <label>Gym im not too bad</label>
-                </section>
-                <section class="iconTouchTarget" ng-click="">
-                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
-                        <path id="deleteSvg"
-                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
-                            fill="#888" fill-rule="nonzero" /></svg>
-                </section>
-            </section>
-            <section class="task">
-                <section class="center">
-                    <section class="iconTouchTarget">
-                        <input type="checkbox" id="Date">
-                    </section>
-                    <label>Date</label>
-                </section>
-                <section class="iconTouchTarget" ng-click="">
-                    <svg width="19" height="22" xmlns="http://www.w3.org/2000/svg">
-                        <path id="deleteSvg"
-                            d="M18.321 1.36h-5.089l-.399-.795A1.018 1.018 0 0011.922 0H7.074a1.006 1.006 0 00-.907.565l-.4.795H.68A.68.68 0 000 2.04v1.359c0 .375.304.68.679.68H18.32a.68.68 0 00.679-.68v-1.36a.68.68 0 00-.679-.68zM2.256 19.84a2.037 2.037 0 002.032 1.912h10.424a2.037 2.037 0 002.032-1.911l.899-14.403H1.357l.9 14.403z"
-                            fill="#888" fill-rule="nonzero" /></svg>
-                </section>
-            </section> -->
         </main>
-        <form class="input" ng-submit="addTask(taskName)">
-            <input type="text" name="" ng-model="taskName" id="" placeholder="Add More Items" autofocus>
-            <section class="iconTouchTarget" ng-click="">
-                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+        <form ng-model="myForm" class="input" ng-submit="searchMode ? changeSearch(taskName)  : addTask(taskName)">
+            <input type="text" name="" ng-change="searchMode ? changeSearch(taskName) : null" ng-model="taskName" id=""
+                placeholder="{{ searchMode ? 'Search ...' : 'Add Items' }}" autofocus>
+            <section class="iconTouchTarget" ng-click="searchMode = !searchMode"
+                title="{{ !searchMode ? 'Search' : 'Add' }}">
+                <svg class="animate-switch" ng-hide="searchMode" width="24" height="24"
+                    xmlns="http://www.w3.org/2000/svg">
                     <g transform="translate(-278 -11)" fill="none" fill-rule="evenodd">
                         <path id="searchSvg"
                             d="M301.674 31.75L297 27.077a1.124 1.124 0 00-.797-.329h-.764a9.7 9.7 0 002.062-5.999c0-5.385-4.364-9.749-9.75-9.749-5.387 0-9.751 4.364-9.751 9.749 0 5.385 4.364 9.75 9.75 9.75a9.704 9.704 0 006.001-2.063v.764c0 .3.117.586.328.797l4.674 4.673c.44.44 1.153.44 1.59 0l1.326-1.327c.44-.44.44-1.153.005-1.593zm-13.923-5.002c-3.315 0-6-2.68-6-5.999 0-3.314 2.68-6 6-6 3.314 0 6 2.682 6 6 0 3.314-2.681 6-6 6z"
                             fill-rule="nonzero" />
                     </g>
+                </svg>
+                <svg class="animate-switch" ng-show="searchMode" width="24" height="24"
+                    xmlns="http://www.w3.org/2000/svg">
+                        <path id="searchSvg"
+                            d="M22.286 9.429H14.57V1.714C14.571.768 13.804 0 12.857 0h-1.714c-.947 0-1.714.768-1.714 1.714V9.43H1.714C.768 9.429 0 10.196 0 11.143v1.714c0 .947.768 1.714 1.714 1.714H9.43v7.715c0 .946.767 1.714 1.714 1.714h1.714c.947 0 1.714-.768 1.714-1.714V14.57h7.715c.946 0 1.714-.767 1.714-1.714v-1.714c0-.947-.768-1.714-1.714-1.714z"
+                            fill="#888" fill-rule="nonzero" />
                 </svg>
             </section>
         </form>
@@ -76,9 +59,14 @@
 
 </html>
 <script>
-    let app = angular.module('myApp', [])
+    let app = angular.module('myApp', ['ngAnimate'])
     app.controller('myCtrl', ($scope, $interval) => {
+        // Init:
+        $scope.searchMode = false;
         // localStorage.getItem()
+        $scope.changeSearch = (input) => {
+            $scope.searchTerm = input
+        }
         $scope.stopPropagation = (event) => {
             event.stopPropagation();
         }
@@ -101,6 +89,7 @@
 
 
         $scope.addTask = (title) => {
+            if (!title) return
             $scope.taskLists.push({
                 title: title,
                 checked: false,
@@ -117,5 +106,5 @@
             }
         }
     })
-    // When its Empty it already submits
+    // add a border colors when hover focus actives :)
 </script>

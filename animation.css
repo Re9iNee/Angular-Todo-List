@@ -15,22 +15,6 @@
 
 
 /* Animate Repeat */
-/* targets elements that are move to another place */
-/* .animate-repeat.ng-move {
-  transition:all linear 30s;
-}
-
-
-.animate-repeat.ng-move {
-  opacity:0;
-  background-color: coral;
-}
-
-.animate-repeat.ng-move.ng-move-active {
-  opacity:1;
-  background-color: green;
-} */
-
 /* Targets when u delete an item */
 .animate-repeat.ng-leave {
     transition: all ease-in .5s;
@@ -49,7 +33,7 @@
 
 /* Targets when u add items */
 .animate-repeat.ng-enter {
-    transition: all cubic-bezier(.44,1.49,.47,1.06) .5s;
+    transition: all cubic-bezier(.44, 1.49, .47, 1.06) .5s;
 }
 
 

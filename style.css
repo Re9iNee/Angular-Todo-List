@@ -179,10 +179,13 @@ body {
 .container {
     background-color: rgb(30, 30, 30);
 }
-.input input:focus, .input input:active {
+
+.input input:focus,
+.input input:active {
     outline: none;
     border: 1px solid #e1e1e1;
 }
+
 .input input:hover {
     background-color: rgb(69, 69, 69);
 }
@@ -249,7 +252,8 @@ label {
 .iconTouchTarget:hover #deleteSvg {
     fill: rgb(223, 223, 223);
 }
+
 /* Animations */
 .task:hover {
-    background: rgb(69 , 69, 69);
+    background: rgb(69, 69, 69);
 }

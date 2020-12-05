@@ -126,12 +126,12 @@ label {
 
 /* Typography */
 @font-face {
-    font-family: "SFProDisplayBold";
-    src: url("./extras/Fonts/SF-Pro-Display-Bold.otf");
+    font-family: "AvenirBold";
+    src: url("./extras/Fonts/AvenirBook(Bold).otf");
 }
 
 header {
-    font-family: "SFProDisplayBold";
+    font-family: "AvenirBold";
     font-size: 2.2rem;
     line-height: 41px;
     text-align: left;
@@ -139,12 +139,12 @@ header {
 }
 
 @font-face {
-    font-family: "SFProDisplayRegular";
-    src: url("./extras/Fonts/SF-Pro-Display-Regular.otf");
+    font-family: "AvenirSemiBold";
+    src: url("./extras/Fonts/AvenirHeavy(Semi_Bold).otf");
 }
 
 body {
-    font-family: "SFProDisplayRegular";
+    font-family: "AvenirSemiBold";
     font-size: 20px;
     line-height: 24px;
     letter-spacing: .38px;
@@ -154,8 +154,8 @@ body {
 
 
 @font-face {
-    font-family: "SFProTextRegular";
-    src: url("./extras/Fonts/SF-Pro-Text-Regular.otf");
+    font-family: "AvenirLight";
+    src: url("./extras/Fonts/AvenirExtraLight.otf");
 }
 
 .input input::placeholder {
@@ -164,7 +164,7 @@ body {
 
 .input input {
     color: rgb(224, 224, 224);
-    font-family: "SFProTextRegular";
+    font-family: "AvenirLight";
     font-size: 17px;
     text-align: left;
     letter-spacing: -0.41px;

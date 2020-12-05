@@ -17,7 +17,7 @@
         <header>Today</header>
         <main class="tasks">
             <section class="task animate-repeat"
-                ng-repeat="task in taskLists | orderBy: 'checked' : false | filter: searchTerm">
+                ng-repeat="task in taskLists | orderBy: 'checked' : true | filter: searchTerm">
                 <section class="center">
                     <section class="iconTouchTarget" ng-click="task.checked = !(task.checked); save()">
                         <input type="checkbox" id="" ng-model="task.checked" ng-change="save()" ng-click="stopPropagation($event)">

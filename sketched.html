@@ -19,8 +19,9 @@
             <section class="task animate-repeat"
                 ng-repeat="task in taskLists | orderBy: 'checked' : false | filter: searchTerm">
                 <section class="center">
-                    <section class="iconTouchTarget" ng-click="task.checked = !(task.checked)">
-                        <input type="checkbox" id="" ng-model="task.checked" ng-click="stopPropagation($event)">
+                    <section class="iconTouchTarget" ng-click="task.checked = !(task.checked); save()">
+                        <input type="checkbox" id="" ng-model="task.checked" ng-change="save()"
+                            ng-click="stopPropagation($event)">
                     </section>
                     <label style="text-decoration: {{ task.checked ? 'line-through;' : 'none'}}"
                         ng-click="changeTaskName(task.title, task.$$hashKey); changeAppState(1);">{{ task.title }}</label>
@@ -36,7 +37,8 @@
         <form ng-model="myForm" class="input" ng-submit="submitForm(taskName)">
             <input type="text" name="" ng-change="onInputChange(taskName)" ng-model="taskName" id="my-input"
                 placeholder="{{ inputPlaceHolder }}" autofocus>
-            <section class="iconTouchTarget" ng-click="svgSwitch(); clearSearchTerm();" title="{{ svgTitle }}">
+            <section class="iconTouchTarget" ng-click="svgSwitch(); clearSearchTerm(); focusOnInput()"
+                title="{{ svgTitle }}">
                 <svg class="animate-switch" ng-show="appState == 0" width="24" height="24">
                     <g transform="translate(-278 -11)" fill="none" fill-rule="evenodd">
                         <path id="searchSvg"
@@ -51,7 +53,7 @@
                         fill="#888" fill-rule="nonzero" />
                 </svg>
                 <svg class="animate-switch" width="24" height="24" ng-show="appState == 1">
-                    <g   id="searchSvg" fill="#888" fill-rule="nonzero">
+                    <g id="searchSvg" fill="#888" fill-rule="nonzero">
                         <path
                             d="M2.087 1.422a1.655 1.655 0 012.34.03L22.34 19.818a1.655 1.655 0 11-2.37 2.311L2.057 3.762a1.655 1.655 0 01.03-2.34z" />
                         <path
@@ -65,143 +67,4 @@
 </body>
 
 </html>
-<script>
-    let app = angular.module('myApp', ['ngAnimate'])
-    app.controller('myCtrl', ($scope, $interval) => {
-        // Init:
-        $scope.searchMode = false;
-        $scope.appState = 0;
-        $scope.tempHash = null;
-        $scope.changeTaskName = (to, hashKey) => {
-            $scope.tempHash = hashKey;
-            $scope.taskName = String(to);
-            document.getElementById("my-input").focus();
-        }
-        $scope.submitForm = (taskName) => {
-            // appState: 0 -> add || 1-> editMode || 2 -> searchMode 
-            switch ($scope.appState) {
-                case 0: {
-                    $scope.addTask(taskName)
-                    break;
-                }
-                case 1: {
-                    for (let v of $scope.taskLists) {
-                        if ($scope.tempHash) {
-                            console.log("Couldnt get Hash");
-                        }
-                        if (v.$$hashKey == $scope.tempHash) {
-                            v.title = taskName;
-                            $scope.taskName = "";
-                            $scope.changeAppState(0);
-                        }
-                    }
-                    break;
-                }
-                case 2: {
-                    $scope.changeSearch(taskName)
-                    break;
-                }
-            }
-        }
-        $scope.svgSwitch = () => {
-            switch ($scope.appState) {
-                case 1: {
-                    $scope.changeAppState(0);
-                    $scope.taskName = "";
-                    break;
-                }
-                case 0: {
-                    $scope.changeAppState(2);
-                    break;
-                }
-                case 2: {
-                    $scope.changeAppState(0);
-                    $scope.taskName = "";
-                    break;
-                }
-                default: {
-                    $scope.changeAppState(0)
-                    $scope.taskName = "";
-                    break;
-                }
-            }
-        }
-        $scope.changeAppState = (to) => {
-            $scope.appState = Number(to)
-            switch (to) {
-                case 0: {
-                    $scope.inputPlaceHolder = "Add Items"
-                    $scope.svgTitle = "Search"
-                    break;
-                }
-                case 1: {
-                    $scope.inputPlaceHolder = "Editing";
-                    $scope.svgTitle = "Close"
-                    break;
-                }
-                case 2: {
-                    $scope.inputPlaceHolder = "Search ..."
-                    $scope.svgTitle = "Add"
-                    break;
-                }
-            }
-        }
-        $scope.changeAppState(0);
-        $scope.onInputChange = (taskName) => {
-            switch ($scope.appState) {
-                case 2: {
-                    $scope.changeSearch(taskName)
-                    break;
-                }
-                default: {
-                    $scope.clearSearchTerm()
-                    break;
-                }
-            }
-        }
-        $scope.changeSearch = (input) => {
-            $scope.searchTerm = input;
-        }
-        $scope.clearSearchTerm = () => {
-            $scope.searchTerm = '';
-        }
-        $scope.stopPropagation = (event) => {
-            event.stopPropagation();
-        }
-        $scope.taskLists = [{
-            title: "Date",
-            checked: true,
-            favourite: false,
-            created: 1605787618219
-        }, {
-            title: "Gym",
-            checked: false,
-            favourite: false,
-            created: 1606046846005,
-        }, {
-            title: "Drink Water",
-            checked: false,
-            favourite: true,
-            created: 1606046846005,
-        }];
-
-
-        $scope.addTask = (title) => {
-            if (!title) return
-            $scope.taskLists.push({
-                title: title,
-                checked: false,
-                favourite: false,
-                created: Date.now()
-            })
-            $scope.taskName = "";
-        }
-        $scope.deleteTask = (hashKey) => {
-            for (const [i, v] of $scope.taskLists.entries()) {
-                if (v.$$hashKey == hashKey) {
-                    $scope.taskLists.splice(i, 1);
-                }
-            }
-        }
-    })
-</script>
+<script src="app.js"></script>
